@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+user = User.where(email: "cesare@hey.com").first_or_initialize
+user.update!(
+  password: "secret",
+  password_confirmation: "secret"
+)

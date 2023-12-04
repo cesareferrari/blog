@@ -3,10 +3,10 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :destroy, :update]
 
   def index
-    if user_signed_in?
-      @blog_posts = BlogPost.sorted
+    @blog_posts = if user_signed_in?
+      BlogPost.sorted
     else
-      @blog_posts = BlogPost.published.sorted
+      BlogPost.published.sorted
     end
   end
 
@@ -45,16 +45,15 @@ class BlogPostsController < ApplicationController
   private
 
   def blog_post_params
-    params.require(:blog_post).permit(:title, :body, :published_at)
+    params.require(:blog_post).permit(:title, :content, :published_at)
   end
 
   def set_blog_post
-    if user_signed_in?
-      @blog_post = BlogPost.find(params[:id])
+    @blog_post = if user_signed_in?
+      BlogPost.find(params[:id])
     else
-      @blog_post = BlogPost.published.find(params[:id])
+      BlogPost.published.find(params[:id])
     end
-
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end

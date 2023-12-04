@@ -14,13 +14,13 @@ user.update!(
 
 post1 = BlogPost.where(title: "Hello world").first_or_initialize
 post1.update!(
-  body: "This is my first post",
+  content: "This is my first post",
   published_at: 2.weeks.ago
 )
 
 post2 = BlogPost.where(title: "Snowing today").first_or_initialize
 post2.update!(
-  body: "Lorem enim magnam natus officia dolorum? Ratione dolore at aliquam quam
+  content: "Lorem enim magnam natus officia dolorum? Ratione dolore at aliquam quam
     praesentium Mollitia magni dolor distinctio impedit repudiandae. Minima
     perferendis minima autem molestias dolorem. Repudiandae sed reiciendis
     blanditiis sunt sint".squish,
@@ -29,7 +29,7 @@ post2.update!(
 
 post3 = BlogPost.where(title: "This is the news").first_or_initialize
 post3.update!(
-  body: "Adipisicing est sed commodi ex voluptates sed Nam quasi unde saepe
+  content: "Adipisicing est sed commodi ex voluptates sed Nam quasi unde saepe
     mollitia quaerat. Ipsum obcaecati consectetur eveniet natus optio Suscipit
     amet labore doloribus quisquam nihil, qui facere Vitae autem tempora!".squish,
   published_at: nil

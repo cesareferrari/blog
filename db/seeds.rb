@@ -12,25 +12,7 @@ user.update!(
   password_confirmation: "secret"
 )
 
-post1 = BlogPost.where(title: "Hello world").first_or_initialize
-post1.update!(
-  content: "This is my first post",
-  published_at: 2.weeks.ago
-)
-
-post2 = BlogPost.where(title: "Snowing today").first_or_initialize
-post2.update!(
-  content: "Lorem enim magnam natus officia dolorum? Ratione dolore at aliquam quam
-    praesentium Mollitia magni dolor distinctio impedit repudiandae. Minima
-    perferendis minima autem molestias dolorem. Repudiandae sed reiciendis
-    blanditiis sunt sint".squish,
-  published_at: 1.week.ago
-)
-
-post3 = BlogPost.where(title: "This is the news").first_or_initialize
-post3.update!(
-  content: "Adipisicing est sed commodi ex voluptates sed Nam quasi unde saepe
-    mollitia quaerat. Ipsum obcaecati consectetur eveniet natus optio Suscipit
-    amet labore doloribus quisquam nihil, qui facere Vitae autem tempora!".squish,
-  published_at: nil
-)
+100.times do |i|
+  blog_post = BlogPost.where(title: "Blog Post #{i}").first_or_initialize
+  blog_post.update(content: "Hello world #{i}", published_at: Time.current)
+end

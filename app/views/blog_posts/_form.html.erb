@@ -19,15 +19,12 @@
     <%= form.label :cover_image, class: "block text-sm uppercase" %>
 
     <% if blog_post.cover_image.present? %>
-
       <div id="<%= dom_id(blog_post, :cover_image) %>">
         <%= image_tag blog_post.cover_image %>
         <%= link_to "Remove cover image",
           blog_post_cover_image_path(blog_post),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       </div>
-
-
     <% end %>
 
 
